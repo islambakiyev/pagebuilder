@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout = "http://ultraq.net.nz/thymeleaf/layout-dialect"
+      xmlns:th = "http://www.thymeleaf.org"
+      xmlns:sec = "http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      layout:decorate = "main_layout.html">
+
+
+<div layout:fragment = "content">
+        <div class="px-4 py-5 px-md-5 text-center text-lg-start mt-5">
+            <div class="container">
+                <div class="row gx-lg-5 align-items-center">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <h1 class="my-5 display-3 fw-bold ls-tight">
+                            Page builder <br />
+                            <span class="text-primary">for your web-sites</span>
+                        </h1>
+                        <p style="color: hsl(217, 10%, 50.8%)">
+                            Say goodbye to the hassle of coding and hello to beautiful, professional-looking websites with our easy-to-use page builder!
+                            Our drag-and-drop interface lets you create stunning web pages in just minutes, without the need for any technical skills.
+                        </p>
+                    </div>
+
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <div class="card">
+                            <div class="card-body py-5 px-md-5">
+
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${param.usererror!=null}">
+                                    EMAIL IS BUSY!
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${param.passworderror!=null}">
+                                    Password are not same!
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${param.success!=null}">
+                                    USER ADDED SUCCESSFULLY!
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+
+                                <form th:action="@{'/to-register'}" method="post">
+
+
+                                    <div class="form-outline mb-4">
+                                        <input type="text" class="form-control" name="user_full_name" required placeholder="Full name"/>
+                                    </div>
+
+                                    <!-- Email input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="email" class="form-control" name="user_email" required placeholder="Insert email" />
+                                    </div>
+
+                                    <!-- Password input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="password" class="form-control" name="user_password" required placeholder="Insert password" />
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="password" class="form-control" name="user_re_password" required placeholder="Repeat password"/>
+                                    </div>
+
+                                    <button class="btn btn-primary btn-block mb-4">
+                                        Sign up
+                                    </button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <footer class="footer fixed-bottom">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary" style="margin-top: 112px">
+                <div class="text-white mb-3 mb-md-0">
+                    Copyright © 2020. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+</html>
+

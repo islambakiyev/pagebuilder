@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout = "http://ultraq.net.nz/thymeleaf/layout-dialect"
+      xmlns:th = "http://www.thymeleaf.org"
+      xmlns:sec = "http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+
+      layout:decorate = "main_layout.html">
+
+
+<div layout:fragment = "content">
+
+    <div class="container text-bg-dark p-3" sec:authorize = "hasAnyAuthority('ROLE_ADMIN')">
+        <div class="row">
+            <div class="col-6">
+               <span class="me-1">Title: </span> <input id="title" th:value="${page.title}">
+            </div>
+            <div class="col-6">
+                <button type="button" onclick="savePage()" class="btn btn-primary float-end ms-1" sec:authorize = "hasAnyAuthority('ROLE_ADMIN')">SAVE</button>
+                <button type="button" onclick="exportPage()" class="btn btn-success float-end ms-1" sec:authorize = "hasAnyAuthority('ROLE_ADMIN')">EXPORT</button>
+                <button type="button" onclick="deletePage()" class="btn btn-danger float-end ms-1" sec:authorize = "hasAnyAuthority('ROLE_ADMIN')">DELETE</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="gjs" sec:authorize = "hasAnyAuthority('ROLE_ADMIN')"></div>
+    <div id="post"></div>
+    <input type="hidden" id="id" th:value="${page.id}">
+    <input type="hidden" id="title" th:value="${page.title}">
+    <input type="hidden" id="idSite" th:value="${site.id}">
+    <input type="hidden" value="true" sec:authorize = "hasAnyAuthority('ROLE_ADMIN')" id="isAdmin">
+</div>
+
+
+
+</html>

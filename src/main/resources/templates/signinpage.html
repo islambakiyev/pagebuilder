@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout = "http://ultraq.net.nz/thymeleaf/layout-dialect"
+      xmlns:th = "http://www.thymeleaf.org"
+      xmlns:sec = "http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      layout:decorate = "main_layout.html">
+
+
+<div layout:fragment = "content">
+
+<div class="row" style="margin-top: 120px">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                     class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${param.usererror!=null}">
+                    EMAIL OR PASSWORD IS NOT CORRECT!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <form th:action="@{'/to-enter'}" method="post">
+
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label">Email address: </label>
+                        <input type="email" name="user_email" class="form-control form-control-lg" required placeholder="Enter email address" />
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-3">
+                        <label class="form-label">Password: </label>
+                        <input type="password" class="form-control form-control-lg" name="user_password" required placeholder="Enter password" />
+                    </div>
+
+
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                        <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a th:href="@{'/sign-up'}" class="link-danger">Register</a></p>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer class="footer fixed-bottom">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary" style="margin-top: 112px">
+                <div class="text-white mb-3 mb-md-0">
+                    Copyright © 2020. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+</html>
+
